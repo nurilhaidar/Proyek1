@@ -10,7 +10,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
               <li class="breadcrumb-item active">Home Page</li>
             </ol>
           </div>
@@ -36,7 +36,16 @@
           </div>
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          <h2>Selamat Datang</h2>
+          <p>
+            Aplikasi ini berfungsi untuk menampung informasi data berikut:<br>
+          1. Informasi Data Jurusan Polinema<br>
+          2. Informasi Data Fasilitas Polinema<br>
+          3. Informasi Data Organisasi Intra Polinema<br>
+
+          Dengan adanya aplikasi ini, mempermudah dalam proses penambahan, update, dan edit data yang ada di Polinema
+          </p>
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

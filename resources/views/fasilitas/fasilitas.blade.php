@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active">Fasilitas</li>
                         </ol>
                     </div>
@@ -44,17 +44,14 @@
                     <a href="{{ url('fasilitas/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
                     <!-- SidebarSearch Form -->
                     <div class="form-inline">
-                        <div class="input-group">
-                            <form action="/fasilitas" method="GET">
-                                <input class="form-control form-control-sidebar" type="search" name="search"
-                                    placeholder="Search" aria-label="Search">
-                            </form>
+                        <form action="/fasilitas" method="GET" class="input-group">
+                            <input class="form-control form-control-sidebar" type="search" name="search" placeholder="Search" aria-label="Search">
                             <div class="input-group-append">
-                                <button class="btn btn-sidebar">
+                                <button class="btn btn-sidebar" type="submit">
                                     <i class="fas fa-search fa-fw"></i>
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <br>
                     <!-- Table -->
