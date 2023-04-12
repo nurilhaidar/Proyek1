@@ -62,11 +62,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>KODE GEDUNG</th>
-                                <th>NAMA GEDUNG</th>
-                                <th>KAPASITAS</th>
-                                <th>LOKASI</th>
-                                <th>KONDISI</th>
+                                <th>Kode Gedung</th>
+                                <th>Nama Gedung</th>
+                                <th>Kapasitas</th>
+                                <th>Lokasi</th>
+                                <th>Kondisi</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -104,7 +104,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    Footer
+                    Kelompok 8
                 </div>
                 <!-- /.card-footer-->
             </div>
