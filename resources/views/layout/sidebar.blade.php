@@ -5,11 +5,7 @@
         <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-<<<<<<< HEAD
         <a href="#" class="d-block">Adinda Kurnia Rifanti</a>
-=======
-        <a href="#" class="d-block">Widya Indah Puspita Sari</a>
->>>>>>> ee6861cf5d97c9a22ad57a6fc126c3c6011aa08c
       </div>
     </div>
 
