@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\OKIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/jurusan', JurusanController::class);
 
-Route::resource('/jurusan', JurusanController::class);
+Route::resource('/fasilitas', FasilitasController::class);
 
-Route::resource('/jurusan', JurusanController::class);
+Route::resource('/oki', OKIController::class);

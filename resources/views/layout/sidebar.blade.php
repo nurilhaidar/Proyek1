@@ -5,10 +5,14 @@
         <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Afifah Nofa Kurnia Rahmadani</a>
+<<<<<<< HEAD
+        <a href="#" class="d-block">Adinda Kurnia Rifanti</a>
+=======
+        <a href="#" class="d-block">Widya Indah Puspita Sari</a>
+>>>>>>> ee6861cf5d97c9a22ad57a6fc126c3c6011aa08c
       </div>
     </div>
-  
+
     <!-- SidebarSearch Form -->
     <div class="form-inline">
       <div class="input-group" data-widget="sidebar-search">
@@ -20,14 +24,14 @@
         </div>
       </div>
     </div>
-  
+
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-       
-  
+
+
          <li class="nav-item">
           <a href={{('/jurusan')}} class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -37,7 +41,7 @@
             </p>
           </a>
         </li>
-  
+
          <li class="nav-item">
           <a href={{('/fasilitas')}} class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -47,7 +51,7 @@
             </p>
           </a>
         </li>
-  
+
         <li class="nav-item">
           <a href={{('/oki')}} class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -57,7 +61,7 @@
             </p>
           </a>
         </li>
-          
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

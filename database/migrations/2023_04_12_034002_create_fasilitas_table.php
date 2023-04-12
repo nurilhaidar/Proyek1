@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jurusan', function (Blueprint $table) {
+        Schema::create('fasilitas', function (Blueprint $table) {
             $table->id();
-            $table->string('kode', 6)->unique();
-            $table->string('nama', 100)->nullable;
-            $table->string('ketua_jurusan', 100)->nullable;
-            $table->string('jml_prodi', 10)->nullable;
-            $table->string('akreditasi', 1)->nullable;
             $table->timestamps();
+            $table->string('kode_gedung', 5)->unique();
+            $table->string('nama_gedung', 50)->nullable();
+            $table->string('kapasitas', 10)->nullable();
+            $table->string('lokasi', 25)->nullable();
+            $table->string('kondisi', 50)->nullable();
+
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jurusans');
+        Schema::dropIfExists('fasilitas');
     }
 };
