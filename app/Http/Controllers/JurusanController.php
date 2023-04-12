@@ -24,7 +24,7 @@ class JurusanController extends Controller
         }
         return view('jurusan')
             ->with('jrs', $jurusan);
-           
+
     }
 
     /**
@@ -58,7 +58,7 @@ class JurusanController extends Controller
         $data = Jurusan::create($request->except(['_token']));
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect('jurusan')
-            ->with('success', 'Jurusan Berhasil Ditambahkan');
+            ->with('success', 'Data Jurusan Berhasil Ditambahkan');
     }
 
     /**
@@ -105,7 +105,7 @@ class JurusanController extends Controller
 
         $data = Jurusan::where('id', '=', $id)->update($request->except(['_token', '_method', 'submit']));
         return redirect('jurusan')
-            ->with('success', 'Jurusan Berhasil Diedit');
+            ->with('success', 'Data Jurusan Berhasil Diedit');
     }
 
     /**
@@ -118,6 +118,6 @@ class JurusanController extends Controller
     {
         Jurusan::where('id', '=', $id)->delete();
         return redirect('jurusan')
-            ->with('success', 'Jurusan Berhasil Dihapus');
+            ->with('success', 'Data Jurusan Berhasil Dihapus');
     }
 }
