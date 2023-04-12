@@ -24,7 +24,6 @@ class JurusanController extends Controller
         }
         return view('jurusan')
             ->with('jrs', $jurusan);
-           
     }
 
     /**
@@ -58,7 +57,7 @@ class JurusanController extends Controller
         $data = Jurusan::create($request->except(['_token']));
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect('jurusan')
-            ->with('success', 'Jurusan Berhasil Ditambahkan');
+            ->with('success', 'Data Jurusan Berhasil Ditambahkan');
     }
 
     /**
@@ -96,11 +95,7 @@ class JurusanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-<<<<<<< HEAD
             'kode' => 'required|string|max:10|unique:jurusan,kode,' . $id,
-=======
-            'kode' => 'required|string|max:10|unique:jurusan,kode,'.$id,
->>>>>>> 61b1e2beb4d508749ef32c316341e5a0129b5948
             'nama' => 'required|string|max:100',
             'ketua_jurusan' => 'required|string|max:100',
             'jml_prodi' => 'required|string|max:50',
@@ -109,7 +104,7 @@ class JurusanController extends Controller
 
         $data = Jurusan::where('id', '=', $id)->update($request->except(['_token', '_method', 'submit']));
         return redirect('jurusan')
-            ->with('success', 'Jurusan Berhasil Diedit');
+            ->with('success', 'Data Jurusan Berhasil Diedit');
     }
 
     /**
@@ -122,6 +117,6 @@ class JurusanController extends Controller
     {
         Jurusan::where('id', '=', $id)->delete();
         return redirect('jurusan')
-            ->with('success', 'Jurusan Berhasil Dihapus');
+            ->with('success', 'Data Jurusan Berhasil Dihapus');
     }
 }

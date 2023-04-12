@@ -8,23 +8,23 @@ use Illuminate\Http\Request;
 
 class FasilitasController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-            if($request->has('search')){
-                $fasilitas = FasilitasModel::where('kode_gedung','LIKE', '%' .$request->search.'%')
-                                            ->orWhere('nama_gedung','LIKE', '%' .$request->search.'%')
-                                            ->orWhere('lokasi','LIKE', '%' .$request->search.'%')
-                                            ->paginate(3);
-            }else{
-                $fasilitas = FasilitasModel::paginate(3);
-            }
-            return view('fasilitas.fasilitas')
-                    ->with('fs', $fasilitas);
+        if ($request->has('search')) {
+            $fasilitas = FasilitasModel::where('kode_gedung', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('nama_gedung', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('lokasi', 'LIKE', '%' . $request->search . '%')
+                ->paginate(3);
+        } else {
+            $fasilitas = FasilitasModel::paginate(3);
+        }
+        return view('fasilitas.fasilitas')
+            ->with('fs', $fasilitas);
     }
 
     /**
@@ -35,7 +35,7 @@ class FasilitasController extends Controller
     public function create()
     {
         return view('fasilitas.create_fasilitas')
-        ->with('url_form', url('/fasilitas'));
+            ->with('url_form', url('/fasilitas'));
     }
 
     /**
@@ -55,10 +55,10 @@ class FasilitasController extends Controller
             'kondisi' => 'required|string|max:50',
         ]);
 
-        $data =FasilitasModel::create($request->except(['_token']));
+        $data = FasilitasModel::create($request->except(['_token']));
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect('fasilitas')
-            ->with('success', 'fasilitas Berhasil Ditambahkan');
+            ->with('success', 'Data Fasilitas Berhasil Ditambahkan');
     }
 
     /**
@@ -82,8 +82,8 @@ class FasilitasController extends Controller
     {
         $fasilitas = FasilitasModel::find($id);
         return view('fasilitas.create_fasilitas')
-                    ->with('fs', $fasilitas)
-                    ->with('url_form', url('/fasilitas/'. $id));
+            ->with('fs', $fasilitas)
+            ->with('url_form', url('/fasilitas/' . $id));
     }
 
     /**
@@ -96,16 +96,16 @@ class FasilitasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung,'.$id,
+            'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung,' . $id,
             'nama_gedung' => 'required|string|max:50',
             'kapasitas' => 'required|string|max:10',
             'lokasi' => 'required|string|max:25',
             'kondisi' => 'required|string|max:50',
         ]);
 
-        $data =FasilitasModel::where('id','=', $id)->update($request->except(['_token', '_method', 'submit']));
+        $data = FasilitasModel::where('id', '=', $id)->update($request->except(['_token', '_method', 'submit']));
         return redirect('fasilitas')
-            ->with('success', 'fasilitas Berhasil Diedit');
+            ->with('success', 'Data Fasilitas Berhasil Diedit');
     }
 
     /**
@@ -118,6 +118,6 @@ class FasilitasController extends Controller
     {
         FasilitasModel::where('id', '=', $id)->delete();
         return redirect('fasilitas')
-        ->with('success', 'fasilitas Berhasil Dihapus');
+            ->with('success', 'Data Fasilitas Berhasil Dihapus');
     }
 }
