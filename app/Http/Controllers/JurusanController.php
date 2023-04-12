@@ -96,6 +96,16 @@ class JurusanController extends Controller
     {
         $request->validate([
             'kode' => 'required|string|max:10',
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+            'kode' => 'required|string|max:10',
+=======
+            'kode' => 'required|string|max:10|unique:jurusan,kode,'.$id,
+>>>>>>> ee6861cf5d97c9a22ad57a6fc126c3c6011aa08c
+>>>>>>> 949ae3bb7f9160a5b22fe904412e260d96b5bc5d
+>>>>>>> 25c1925b8d54e7e99b966fe85b31c6b06b7e7087
             'nama' => 'required|string|max:100',
             'ketua_jurusan' => 'required|string|max:100',
             'jml_prodi' => 'required|string|max:50',

@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <label>Ketua Jurusan</label>
-                    <input class="form-control @error('jk') is-invalid @enderror" value="{{ isset($jrs)? $jrs->ketua_jurusan :old('ketua_jurusan') }}" name="ketua_jurusan" type="text"/>
+                    <input class="form-control @error('ketua_jurusan') is-invalid @enderror" value="{{ isset($jrs)? $jrs->ketua_jurusan :old('ketua_jurusan') }}" name="ketua_jurusan" type="text"/>
                     @error('ketua_jurusan')
                         <span class="error invalid-feedback">{{$message}}</span>
                     @enderror
@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group">
                     <label>Akreditasi</label>
-                    <input class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ isset($jrs)? $jrs->akreditasi : old('akreditasi') }}" name="akreditasi" type="text" />
+                    <input class="form-control @error('Akreditasi') is-invalid @enderror" value="{{ isset($jrs)? $jrs->akreditasi : old('akreditasi') }}" name="akreditasi" type="text" />
                     @error('akreditasi')
                         <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
