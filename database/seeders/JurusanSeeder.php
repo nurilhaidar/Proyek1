@@ -15,6 +15,6 @@ class JurusanSeeder extends Seeder
      */
     public function run()
     {
-        Jurusan::factory()->create();
+        Jurusan::factory()->count(10)->create();
     }
 }

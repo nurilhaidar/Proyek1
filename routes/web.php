@@ -21,3 +21,7 @@ Route::resource('/jurusan', JurusanController::class);
 Route::resource('/fasilitas', FasilitasController::class);
 
 Route::resource('/oki', OKIController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
