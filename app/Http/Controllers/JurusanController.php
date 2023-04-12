@@ -18,12 +18,13 @@ class JurusanController extends Controller
             $jurusan = Jurusan::where('nama', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('ketua_jurusan', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('kode', 'LIKE', '%' . $request->search . '%')
-                ->paginate(3);
+                ->paginate(5);
         } else {
-            $jurusan = Jurusan::paginate(3);
+            $jurusan = Jurusan::paginate(5);
         }
         return view('jurusan')
             ->with('jrs', $jurusan);
+           
     }
 
     /**
@@ -95,7 +96,11 @@ class JurusanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
             'kode' => 'required|string|max:10|unique:jurusan,kode,' . $id,
+=======
+            'kode' => 'required|string|max:10|unique:jurusan,kode,'.$id,
+>>>>>>> 61b1e2beb4d508749ef32c316341e5a0129b5948
             'nama' => 'required|string|max:100',
             'ketua_jurusan' => 'required|string|max:100',
             'jml_prodi' => 'required|string|max:50',

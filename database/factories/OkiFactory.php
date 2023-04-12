@@ -14,14 +14,16 @@ class OkiFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    //  protected $model = Oki::class; 
     public function definition()
     {
         return [
-            'kode' => $this->faker->unique()->randomNumber(10),
-            'nama' => $this->faker->name,
-            'ketua_jurusan' => $this->faker->name,
-            'jml_prodi' => $this->faker->randomDigitNotNull,
-            'akreditasi' => $this->faker->randomElement(['A', 'B', 'C']),
+            'kode' => $this->faker->unique()->randomNumber(5),
+            'nama_oki' => $this->faker->name,
+            'ketua_oki' => $this->faker->name,
+            'jumlah_anggota' => $this->faker->randomDigitNotNull,
+            'akun' => $this->faker->name,
         ];
     }
 }

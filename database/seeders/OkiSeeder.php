@@ -15,6 +15,6 @@ class OkiSeeder extends Seeder
      */
     public function run()
     {
-        oki::factory()->create();
+        oki::factory()->count(10)->create();
     }
 }
