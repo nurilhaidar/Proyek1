@@ -28,12 +28,7 @@ Route::get('/tes', function () {
 });
 Route::middleware(['auth'])->group(function () {
     Route::resource('/jurusan', JurusanController::class);
-
     Route::resource('/fasilitas', FasilitasController::class);
-
     Route::resource('/oki', OKIController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
