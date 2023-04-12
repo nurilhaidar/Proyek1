@@ -116,7 +116,7 @@ class OKIController extends Controller
     public function destroy($id)
     {
         oki::where('id', '=', $id)->delete();
-        return redirect('oki.oki')
+        return redirect('oki')
             ->with('success', 'Data OKI Berhasil Dihapus');
     }
 }
