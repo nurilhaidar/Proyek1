@@ -95,7 +95,7 @@ class OKIController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode' => 'required|string|max:10',
+            'kode' => 'required|string|max:10|unique:oki,kode,' . $id,
             'nama_oki' => 'required|string|max:100',
             'ketua_oki' => 'required|string|max:100',
             'jumlah_anggota' => 'required|string|max:50',
