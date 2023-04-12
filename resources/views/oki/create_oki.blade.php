@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Jurusan</h1>
+            <h1>OKI</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Jurusan</li>
+              <li class="breadcrumb-item active">OKI Page</li>
             </ol>
           </div>
         </div>
@@ -38,39 +38,39 @@
         <div class="card-body">
             <form method="POST" action="{{ $url_form}}">
                 @csrf
-                {!! (isset($jrs))? method_field('PUT'): ''!!}
+                {!! (isset($oki))? method_field('PUT'): ''!!}
                 <div class="form-group">
                     <label>Kode</label>
-                    <input class="form-control @error('kode') is-invalid @enderror" value="{{ isset($jrs)? $jrs->kode :old('kode') }}" name="kode" type="text"/>
+                    <input class="form-control @error('kode') is-invalid @enderror" value="{{ isset($oki)? $oki->kode :old('kode') }}" name="kode" type="text"/>
                     @error('kode')
                         <span class="error invalid-feedback">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Nama</label>
-                    <input class="form-control @error('nama') is-invalid @enderror" value="{{ isset($jrs)? $jrs->nama :old('nama') }}" name="nama" type="text"/>
-                    @error('nama')
+                    <label>Nama OKI</label>
+                    <input class="form-control @error('nama_oki') is-invalid @enderror" value="{{ isset($oki)? $oki->nama_oki :old('nama_oki') }}" name="nama_oki" type="text"/>
+                    @error('nama_oki')
                         <span class="error invalid-feedback">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Ketua Jurusan</label>
-                    <input class="form-control @error('ketua_jurusan') is-invalid @enderror" value="{{ isset($jrs)? $jrs->ketua_jurusan :old('ketua_jurusan') }}" name="ketua_jurusan" type="text"/>
-                    @error('ketua_jurusan')
+                    <label>Ketua OKI</label>
+                    <input class="form-control @error('ketua_oki') is-invalid @enderror" value="{{ isset($oki)? $oki->ketua_oki :old('ketua_oki') }}" name="ketua_oki" type="text"/>
+                    @error('ketua_oki')
                         <span class="error invalid-feedback">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Jumlah Prodi</label>
-                    <input class="form-control @error('jml_prodi') is-invalid @enderror" value="{{ isset($jrs)? $jrs->jml_prodi : old('jml_prodi') }}" name="jml_prodi" type="text" />
-                    @error('jml_prodi')
+                    <label>Jumlah Anggota</label>
+                    <input class="form-control @error('jumlah_anggota') is-invalid @enderror" value="{{ isset($oki)? $oki->jumlah_anggota : old('jumlah_anggota') }}" name="jumlah_anggota" type="text" />
+                    @error('jumlah_anggota')
                         <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Akreditasi</label>
-                    <input class="form-control @error('Akreditasi') is-invalid @enderror" value="{{ isset($jrs)? $jrs->akreditasi : old('akreditasi') }}" name="akreditasi" type="text" />
-                    @error('akreditasi')
+                    <label>Akun Sosial Media</label>
+                    <input class="form-control @error('akun') is-invalid @enderror" value="{{ isset($oki)? $oki->akun : old('akun') }}" name="akun" type="text" />
+                    @error('akun')
                         <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
@@ -81,7 +81,7 @@
           </div>
           <!-- /.card-body -->
         <div class="card-footer">
-          Footer
+          Kelompok 8
         </div>
         <!-- /.card-footer-->
       </div>
