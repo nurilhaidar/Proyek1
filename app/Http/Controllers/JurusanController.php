@@ -92,7 +92,7 @@ class JurusanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode' => 'required|string|max:10|unique:jurusan,kode',
+            'kode' => 'required|string|max:10',
             'nama' => 'required|string|max:100',
             'ketua_jurusan' => 'required|string|max:100',
             'jml_prodi' => 'required|string|max:50',
