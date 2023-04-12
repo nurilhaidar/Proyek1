@@ -56,7 +56,7 @@
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
-                    <th>NOMOR</th>
+                    <th>NO</th>
                     <th>KODE GEDUNG</th>
                     <th>NAMA GEDUNG</th>
                     <th>KAPASITAS</th>
