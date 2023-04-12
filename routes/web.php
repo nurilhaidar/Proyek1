@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\OKIController;
@@ -19,17 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
-<<<<<<< HEAD
-Route::resource('/fasilitas', FasilitasController::class);
-
-Route::resource('/oki', OKIController::class);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
 Route::get('/tes', function () {
     echo Hash::make('1') . "<br>";
     echo Hash::make('1') . "<br>";
@@ -40,5 +32,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/fasilitas', FasilitasController::class);
     Route::resource('/oki', OKIController::class);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 });
->>>>>>> 7cec023d4ccc8e7e09ee35dd8f27592719654f6e
