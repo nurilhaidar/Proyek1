@@ -1,15 +1,11 @@
-<div class="sidebar">
+6<div class="sidebar">
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
         <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-<<<<<<< HEAD
-        <a href="#" class="d-block">Adinda Kurnia Rifanti</a>
-=======
-        <a href="#" class="d-block">Widya Indah Puspita Sari</a>
->>>>>>> ee6861cf5d97c9a22ad57a6fc126c3c6011aa08c
+        <a href="#" class="d-block">Kelompok 8</a>
       </div>
     </div>
 
