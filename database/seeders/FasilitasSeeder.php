@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\FasilitasModel;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class FasilitasSeeder extends Seeder
@@ -15,6 +14,6 @@ class FasilitasSeeder extends Seeder
      */
     public function run()
     {
-        FasilitasModel::factory()->create();
+        FasilitasModel::factory()->count(10)->create();
     }
 }
