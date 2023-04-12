@@ -24,10 +24,7 @@ class JurusanController extends Controller
         }
         return view('jurusan')
             ->with('jrs', $jurusan);
-<<<<<<< HEAD
 
-=======
->>>>>>> 7c2aab9de124e89b699cfd3fd32534af54ac0259
     }
 
     /**
@@ -99,11 +96,7 @@ class JurusanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-<<<<<<< HEAD
             'kode' => 'required|string|max:10|unique:jurusan,kode,'.$id,
-=======
-            'kode' => 'required|string|max:10|unique:jurusan,kode,' . $id,
->>>>>>> 7c2aab9de124e89b699cfd3fd32534af54ac0259
             'nama' => 'required|string|max:100',
             'ketua_jurusan' => 'required|string|max:100',
             'jml_prodi' => 'required|string|max:50',
