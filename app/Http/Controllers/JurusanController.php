@@ -14,6 +14,7 @@ class JurusanController extends Controller
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
         if ($request->has('search')) {
             $jurusan = Jurusan::where('nama', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('ketua_jurusan', 'LIKE', '%' . $request->search . '%')
@@ -24,6 +25,18 @@ class JurusanController extends Controller
         }
         return view('jurusan')
             ->with('jrs', $jurusan);
+=======
+            if($request->has('search')){
+                $jurusan = Jurusan::where('nama', 'LIKE', '%' .$request->search.'%')
+                                    ->orWhere('ketua_jurusan', 'LIKE', '%' .$request->search.'%')
+                                    ->orWhere('kode', 'LIKE', '%' .$request->search.'%')
+                                    ->paginate(3);
+            }else{
+                $jurusan = Jurusan::paginate(3);
+            }
+            return view('jurusan')
+                    ->with('jrs', $jurusan);
+>>>>>>> ee6861cf5d97c9a22ad57a6fc126c3c6011aa08c
     }
 
     /**
@@ -95,7 +108,11 @@ class JurusanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
             'kode' => 'required|string|max:10',
+=======
+            'kode' => 'required|string|max:10|unique:jurusan,kode,'.$id,
+>>>>>>> ee6861cf5d97c9a22ad57a6fc126c3c6011aa08c
             'nama' => 'required|string|max:100',
             'ketua_jurusan' => 'required|string|max:100',
             'jml_prodi' => 'required|string|max:50',
