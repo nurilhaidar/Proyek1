@@ -47,13 +47,30 @@ class FasilitasController extends Controller
     public function store(Request $request)
     {
         //validasi
+        // $request->validate([
+        //     'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung',
+        //     'nama_gedung' => 'required|string|max:50',
+        //     'kapasitas' => 'required|integer',
+        //     'lokasi' => 'required|string|max:25',
+        //     'kondisi' => 'required|string|max:50',
+        // ]);
+
         $request->validate([
             'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung',
             'nama_gedung' => 'required|string|max:50',
-            'kapasitas' => 'required|string|max:10',
+            'kapasitas' => 'required|integer',
             'lokasi' => 'required|string|max:25',
             'kondisi' => 'required|string|max:50',
+        ],
+        [
+            'kode_gedung.required' => 'Kode Gedung tidak boleh kosong',
+            'nama_gedung.required' => 'Nama Gedung tidak boleh kosong',
+            'kapasitas.required' => 'Kapasitas tidak boleh kosong',
+            'kapasitas.integer' => 'Kapasitas harus berupa angka',
+            'lokasi.required' => 'Lokasi tidak boleh kosong',
+            'kondisi.required' => 'Kondisi tidak boleh kosong'
         ]);
+
 
         $data = FasilitasModel::create($request->except(['_token']));
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
@@ -98,7 +115,7 @@ class FasilitasController extends Controller
         $request->validate([
             'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung,' . $id,
             'nama_gedung' => 'required|string|max:50',
-            'kapasitas' => 'required|string|max:10',
+            'kapasitas' => 'required|integer',
             'lokasi' => 'required|string|max:25',
             'kondisi' => 'required|string|max:50',
         ]);
