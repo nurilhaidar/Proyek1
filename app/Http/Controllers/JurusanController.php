@@ -18,13 +18,12 @@ class JurusanController extends Controller
             $jurusan = Jurusan::where('nama', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('ketua_jurusan', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('kode', 'LIKE', '%' . $request->search . '%')
-                ->paginate(5);
+                ->paginate(5)->withQueryString();
         } else {
             $jurusan = Jurusan::paginate(5);
         }
         return view('jurusan')
             ->with('jrs', $jurusan);
-
     }
 
     /**
@@ -47,13 +46,22 @@ class JurusanController extends Controller
     public function store(Request $request)
     {
         //validasi
-        $request->validate([
-            'kode' => 'required|string|max:10|unique:jurusan,kode',
-            'nama' => 'required|string|max:100',
-            'ketua_jurusan' => 'required|string|max:100',
-            'jml_prodi' => 'required|string|max:50',
-            'akreditasi' => 'required|string|max:2',
-        ]);
+        $request->validate(
+            [
+                'kode' => 'required|string|max:6|unique:jurusan,kode',
+                'nama' => 'required|string|max:100',
+                'ketua_jurusan' => 'required|string|max:100',
+                'jml_prodi' => 'required|integer',
+                'akreditasi' => 'required|string|max:2',
+            ],
+            [
+                'kode.required' => 'Kode Jurusan tidak boleh kosong',
+                'nama.required' => 'Nama Jurusan tidak boleh kosong',
+                'ketua_jurusan.required' => 'Ketua Jurusan tidak boleh kosong',
+                'jml_prodi.integer' => 'Jumlah Prodi anggota harus berupa angka',
+                'akreditasi.required' => 'Akreditasi tidak boleh kosong',
+            ]
+        );
 
         $data = Jurusan::create($request->except(['_token']));
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
@@ -96,10 +104,10 @@ class JurusanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode' => 'required|string|max:10|unique:jurusan,kode,'.$id,
+            'kode' => 'required|string|max:6|unique:jurusan,kode,' . $id,
             'nama' => 'required|string|max:100',
             'ketua_jurusan' => 'required|string|max:100',
-            'jml_prodi' => 'required|string|max:50',
+            'jml_prodi' => 'required|integer',
             'akreditasi' => 'required|string|max:2',
         ]);
 

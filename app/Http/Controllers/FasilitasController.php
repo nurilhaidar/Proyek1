@@ -19,7 +19,7 @@ class FasilitasController extends Controller
             $fasilitas = FasilitasModel::where('kode_gedung', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('nama_gedung', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('lokasi', 'LIKE', '%' . $request->search . '%')
-                ->paginate(3);
+                ->paginate(3)->withQueryString();
         } else {
             $fasilitas = FasilitasModel::paginate(3);
         }
@@ -46,30 +46,23 @@ class FasilitasController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi
-        // $request->validate([
-        //     'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung',
-        //     'nama_gedung' => 'required|string|max:50',
-        //     'kapasitas' => 'required|integer',
-        //     'lokasi' => 'required|string|max:25',
-        //     'kondisi' => 'required|string|max:50',
-        // ]);
-
-        $request->validate([
-            'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung',
-            'nama_gedung' => 'required|string|max:50',
-            'kapasitas' => 'required|integer',
-            'lokasi' => 'required|string|max:25',
-            'kondisi' => 'required|string|max:50',
-        ],
-        [
-            'kode_gedung.required' => 'Kode Gedung tidak boleh kosong',
-            'nama_gedung.required' => 'Nama Gedung tidak boleh kosong',
-            'kapasitas.required' => 'Kapasitas tidak boleh kosong',
-            'kapasitas.integer' => 'Kapasitas harus berupa angka',
-            'lokasi.required' => 'Lokasi tidak boleh kosong',
-            'kondisi.required' => 'Kondisi tidak boleh kosong'
-        ]);
+        $request->validate(
+            [
+                'kode_gedung' => 'required|string|max:5|unique:fasilitas,kode_gedung',
+                'nama_gedung' => 'required|string|max:50',
+                'kapasitas' => 'required|integer',
+                'lokasi' => 'required|string|max:25',
+                'kondisi' => 'required|string|max:50',
+            ],
+            [
+                'kode_gedung.required' => 'Kode Gedung tidak boleh kosong',
+                'nama_gedung.required' => 'Nama Gedung tidak boleh kosong',
+                'kapasitas.required' => 'Kapasitas tidak boleh kosong',
+                'kapasitas.integer' => 'Kapasitas harus berupa angka',
+                'lokasi.required' => 'Lokasi tidak boleh kosong',
+                'kondisi.required' => 'Kondisi tidak boleh kosong'
+            ]
+        );
 
 
         $data = FasilitasModel::create($request->except(['_token']));
