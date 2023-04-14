@@ -81,7 +81,7 @@
           </div>
           <!-- /.card-body -->
         <div class="card-footer">
-          Footer
+          Kelompok 8
         </div>
         <!-- /.card-footer-->
       </div>
