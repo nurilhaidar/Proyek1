@@ -1,27 +1,5 @@
 @extends('layout.template')
 @section('content')
-<<<<<<< HEAD
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Jurusan Polinema</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Jurusan</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-=======
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -39,7 +17,6 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
->>>>>>> 8e678d2a0804e2ecc7a8a55c5aa19edf6c9788e1
 
         <!-- Main content -->
         <section class="content">
