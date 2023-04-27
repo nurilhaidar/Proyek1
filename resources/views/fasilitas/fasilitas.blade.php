@@ -45,7 +45,8 @@
                     <!-- SidebarSearch Form -->
                     <div class="form-inline">
                         <form action="/fasilitas" method="GET" class="input-group">
-                            <input class="form-control form-control-sidebar" type="search" name="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control form-control-sidebar" type="search" name="search"
+                                placeholder="Search" aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-sidebar" type="submit">
                                     <i class="fas fa-search fa-fw"></i>
@@ -84,7 +85,8 @@
                                             <form method="POST" action="{{ url('/fasilitas/' . $f->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">hapus</button>
+                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                    onclick="confirmDelete()">hapus</button>
                                             </form>
 
                                         </td>
@@ -111,3 +113,18 @@
         <!-- /.content -->
     </div>
 @endsection
+@push('custom_js')
+    {{-- <script>
+  alert('Halaman Home')
+</script> --}}
+
+    <script>
+        function confirmDelete() {
+            if (confirm('Apakah Anda yakin? Data akan dihapus. Apakah Anda ingin melanjutkan?')) {
+                document.getElementById('form').submit();
+            } else {
+                event.preventDefault()
+            }
+        }
+    </script>
+@endpush

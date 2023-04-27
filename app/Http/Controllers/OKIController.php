@@ -15,17 +15,15 @@ class OKIController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $oki = oki::where('nama_oki', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('ketua_oki', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('kode', 'LIKE', '%' . $request->search . '%')
-                ->paginate(3);
+            $oki = oki::where('nama_oki', 'LIKE', '%' . $request->input('search') . '%')
+                ->orWhere('ketua_oki', 'LIKE', '%' . $request->input('search') . '%')
+                ->orWhere('kode', 'LIKE', '%' . $request->input('search') . '%')
+                ->paginate(3)->withQueryString();
         } else {
             $oki = oki::paginate(3);
         }
-        return view('oki.oki')
-            ->with('oki', $oki);
+        return view('oki.oki', compact('oki'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -46,13 +44,22 @@ class OKIController extends Controller
     public function store(Request $request)
     {
         //validasi
-        $request->validate([
-            'kode' => 'required|string|max:10|unique:oki,kode',
-            'nama_oki' => 'required|string|max:100',
-            'ketua_oki' => 'required|string|max:100',
-            'jumlah_anggota' => 'required|string|max:50',
-            'akun' => 'required|string|max:100',
-        ]);
+        $request->validate(
+            [
+                'kode' => 'required|string|max:10|unique:oki,kode',
+                'nama_oki' => 'required|string|max:100',
+                'ketua_oki' => 'required|string|max:100',
+                'jumlah_anggota' => 'required|integer',
+                'akun' => 'required|string|max:100',
+            ],
+            [
+                'kode.required' => 'Kode OKI tidak boleh kosong',
+                'nama_oki.required' => 'Nama OKI tidak boleh kosong',
+                'ketua_oki.required' => 'Ketua OKI tidak boleh kosong',
+                'jumlah_anggota.integer' => 'Jumlah anggota harus berupa angka',
+                'akun.required' => 'Akun tidak boleh kosong',
+            ]
+        );
 
         $data = oki::create($request->except(['_token']));
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
@@ -98,7 +105,7 @@ class OKIController extends Controller
             'kode' => 'required|string|max:10|unique:oki,kode,' . $id,
             'nama_oki' => 'required|string|max:100',
             'ketua_oki' => 'required|string|max:100',
-            'jumlah_anggota' => 'required|string|max:50',
+            'jumlah_anggota' => 'required|integer',
             'akun' => 'required|string|max:100',
         ]);
 
