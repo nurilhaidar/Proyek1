@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('jurusan');
-        Schema::create('jurusan', function (Blueprint $table) {
+        Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            $table->string('kode', 6)->unique();
-            $table->string('nama', 100)->nullable;
-            $table->string('ketua_jurusan', 100)->nullable;
-            $table->integer('jml_prodi')->nullable;
-            $table->string('akreditasi', 1)->nullable;
             $table->timestamps();
+            $table->string('kode_barang', 4)->unique();
+            $table->string('nama_barang', 50)->nullable();
+            $table->integer('jumlah_barang')->nullable();
+            $table->string('kondisi', 50)->nullable();
+
         });
     }
 
@@ -32,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('jurusan', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('barang');
     }
 };

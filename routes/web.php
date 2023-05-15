@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\FasilitasController;
-use App\Http\Controllers\JurusanController;
-use App\Http\Controllers\OKIController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\FormPeminjamanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +27,8 @@ Route::get('/tes', function () {
     echo Hash::make('1') . "<br>";
 });
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/jurusan', JurusanController::class);
-    Route::resource('/fasilitas', FasilitasController::class);
-    Route::resource('/oki', OKIController::class);
+    Route::resource('/barang', BarangController::class);
+    Route::resource('/peminjaman', FormPeminjamanController::class);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 });

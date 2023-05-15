@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\FasilitasModel;
+use App\Models\BarangModel;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class FasilitasSeeder extends Seeder
+class BarangSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class FasilitasSeeder extends Seeder
      */
     public function run()
     {
-        FasilitasModel::factory()->count(10)->create();
+         BarangModel::factory()->count(10)->create();
     }
 }

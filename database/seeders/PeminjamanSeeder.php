@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Jurusan;
+use App\Models\PeminjamanModel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class JurusanSeeder extends Seeder
+class PeminjamanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class JurusanSeeder extends Seeder
      */
     public function run()
     {
-        Jurusan::factory()->count(10)->create();
+        PeminjamanModel::factory()->count(10)->create();
     }
 }

@@ -6,12 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Fasilitas</h1>
+                        <h1>Data Barang</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Fasilitas</li>
+                            <li class="breadcrumb-item active">Data Barang</li>
                         </ol>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">kelas : TI-2A</h3>
+                    <h3 class="card-title">Data Barang</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -41,10 +41,10 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <a href="{{ url('fasilitas/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+                    <a href="{{ url('barang/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
                     <!-- SidebarSearch Form -->
                     <div class="form-inline">
-                        <form action="/fasilitas" method="GET" class="input-group">
+                        <form action="/barang" method="GET" class="input-group">
                             <input class="form-control form-control-sidebar" type="search" name="search"
                                 placeholder="Search" aria-label="Search">
                             <div class="input-group-append">
@@ -60,29 +60,27 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kode Gedung</th>
-                                <th>Nama Gedung</th>
-                                <th>Kapasitas</th>
-                                <th>Lokasi</th>
+                                <th>Kode Barang</th>
+                                <th>Nama Barang</th>
+                                <th>Jumlah Barang</th>
                                 <th>Kondisi</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($fs->count() > 0)
-                                @foreach ($fs as $index => $f)
+                            @if ($br->count() > 0)
+                                @foreach ($br as $index => $b)
                                     <tr>
-                                        <td>{{ $index + $fs->firstItem() }}</td>
-                                        <td>{{ $f->kode_gedung }}</td>
-                                        <td>{{ $f->nama_gedung }}</td>
-                                        <td>{{ $f->kapasitas }}</td>
-                                        <td>{{ $f->lokasi }}</td>
-                                        <td>{{ $f->kondisi }}</td>
+                                        <td>{{ $index + $br->firstItem() }}</td>
+                                        <td>{{ $b->kode_barang }}</td>
+                                        <td>{{ $b->nama_barang }}</td>
+                                        <td>{{ $b->jumlah_barang }}</td>
+                                        <td>{{ $b->kondisi }}</td>
                                         <td>
                                             <!-- Bikin tombol edit dan delete -->
-                                            <a href="{{ url('/fasilitas/' . $f->id . '/edit') }}"
+                                            <a href="{{ url('/barang/' . $b->id . '/edit') }}"
                                                 class="btn btn-sm btn-warning">edit</a>
-                                            <form method="POST" action="{{ url('/fasilitas/' . $f->id) }}">
+                                            <form method="POST" action="{{ url('/barang/' . $b->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger"
@@ -99,7 +97,7 @@
                             @endif
                         </tbody>
                     </table><br>
-                    {{ $fs->links() }}
+                    {{ $br->links() }}
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
