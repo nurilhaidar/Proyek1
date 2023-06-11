@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PeminjamanModel extends Model
 {
     use HasFactory;
-    protected $table = 'form_peminjaman';
+
+    protected $table = 'peminjaman';
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $fillable = [
@@ -24,4 +25,14 @@ class PeminjamanModel extends Model
         'kondisi',
         'status'
     ];
+
+    public function detail()
+    {
+        return $this->belongsToMany(BarangModel::class, 'detail_peminjaman', 'id_peminjaman', 'id_barang')->withPivot('qty');
+    }
+
+    public function status()
+    {
+        return $this->hasOne(StatusModel::class, 'id_peminjaman', 'id');
+    }
 }

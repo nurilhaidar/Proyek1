@@ -17,10 +17,9 @@ class BarangModelFactory extends Factory
     protected $model = BarangModel::class;
     public function definition()
     {
-         return [
-            'kode_barang' => $this->faker->unique()->randomNumber(4),
+        return [
             'nama_barang' => $this->faker->company,
-            'jumlah_barang' => $this->faker->numberBetween(1, 1000),
+            'stok' => $this->faker->numberBetween(1, 10),
             'kondisi' => $this->faker->randomElement(['cukup', 'baik', 'sangat baik']),
         ];
     }

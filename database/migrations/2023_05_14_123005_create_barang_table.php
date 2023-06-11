@@ -14,13 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('barang', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('kode_barang', 4)->unique();
-            $table->string('nama_barang', 50)->nullable();
-            $table->integer('jumlah_barang')->nullable();
+            $table->string('id', 10)->primary();
+            $table->string('nama', 50)->nullable();
+            $table->string('no_inventaris', 30)->nullable();
+            $table->string('sumber_dana',50)->nullable();
+            $table->integer('jumlah_awal')->nullable();
+            $table->string('status', 50)->nullable();
+            $table->integer('stok')->nullable();
             $table->string('kondisi', 50)->nullable();
-
+            $table->string('satuan', 50)->nullable();
+            $table->timestamps();
         });
     }
 

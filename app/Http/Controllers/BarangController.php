@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BarangModel;
-use App\Models\sc;
+use App\Models\StatusModel;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -15,15 +15,8 @@ class BarangController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('search')) {
-            $barang = BarangModel::where('kode_barang', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('nama_barang', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('jumlah_barang', 'LIKE', '%' . $request->search . '%')
-                ->paginate(3)->withQueryString();
-        } else {
-            $barang = BarangModel::paginate(3);
-        }
-        return view('barang.barang')
+        $barang = BarangModel::all();
+        return view('admin.barang.barang')
             ->with('br', $barang);
     }
 
@@ -34,7 +27,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('barang.create_barang')
+        return view('admin.barang.create_barang')
             ->with('url_form', url('/barang'));
     }
 
@@ -48,22 +41,29 @@ class BarangController extends Controller
     {
         $request->validate(
             [
-                'kode_barang' => 'required|string|max:4|unique:barang,kode_barang',
-                'nama_barang' => 'required|string|max:50',
-                'jumlah_barang' => 'required|integer',
-                'kondisi' => 'required|string|max:50',
-            ],
-            [
-                'kode_barang.required' => 'Kode Barang tidak boleh kosong',
-                'nama_barang.required' => 'Nama Barang tidak boleh kosong',
-                'jumlah_barang.integer' => 'jumlah_barang harus berupa angka',
-                'kondisi.required' => 'Kondisi tidak boleh kosong'
+                'no_inventaris' => 'required|string|unique:barang,no_inventaris',
+                'nama' => 'required|string|max:50',
+                'jumlah_awal' => 'required|integer',
+                'stok' => 'required|integer',
+                'sumber_dana' => 'required|string',
+                'kondisi' => 'required|string',
+                'satuan' => 'required|string'
             ]
         );
 
+        $id = rand(10000, 99999);
 
-        $data = BarangModel::create($request->except(['_token']));
-        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        $barang = new BarangModel;
+        $barang->id = $id;
+        $barang->nama = $request->get('nama');
+        $barang->no_inventaris = $request->get('no_inventaris');
+        $barang->sumber_dana = $request->get('sumber_dana');
+        $barang->jumlah_awal = $request->get('jumlah_awal');
+        $barang->stok = $request->get('stok');
+        $barang->kondisi = $request->get('kondisi');
+        $barang->satuan = $request->get('satuan');
+        $barang->save();
+
         return redirect('barang')
             ->with('success', 'Data barang Berhasil Ditambahkan');
     }
@@ -88,8 +88,11 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
+        $kondisi = ['Baik', 'Rusak'];
+        $satuan = ['Buah', 'Gulung', 'Kantong', 'Pack'];
+        $sumber = ['Swadana', 'Dipa', 'Hibah'];
         $barang = BarangModel::find($id);
-        return view('barang.create_barang')
+        return view('admin.barang.create_barang', compact('kondisi', 'satuan', 'sumber'))
             ->with('br', $barang)
             ->with('url_form', url('/barang/' . $id));
     }
@@ -102,12 +105,17 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'kode_barang' => 'required|string|max:4|unique:barang,kode_barang,' . $id,
-            'nama_barang' => 'required|string|max:50',
-            'jumlah_barang' => 'required|integer',
-            'kondisi' => 'required|string|max:50',
-        ]);
+        $request->validate(
+            [
+                'no_inventaris' => 'required|string',
+                'nama' => 'required|string|max:50',
+                'jumlah_awal' => 'required|integer',
+                'stok' => 'required|integer',
+                'sumber_dana' => 'required|string',
+                'kondisi' => 'required|string',
+                'satuan' => 'required|string'
+            ]
+        );
 
         $data = BarangModel::where('id', '=', $id)->update($request->except(['_token', '_method', 'submit']));
         return redirect('barang')

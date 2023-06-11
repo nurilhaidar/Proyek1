@@ -10,11 +10,22 @@ class BarangModel extends Model
     use HasFactory;
     protected $table = 'barang';
     protected $primaryKey = 'id';
-    protected $keyType = 'string';
+    protected $keyTupe = 'string';
+    public $timestamps = false;
     protected $fillable = [
-        'kode_barang',
         'nama_barang',
-        'jumlah_barang',
-        'kondisi'
+        'stok',
+        'kondisi',
+        'satuan',
+        'sumber_dana',
+        'jumlah_awal',
+        'status',
+        'no_inventaris',
+        'id'
     ];
+
+    public function pinjam()
+    {
+        return $this->belongsToMany(PeminjamanModel::class, 'detail_peminjaman', 'id_barang', 'id_peminjaman')->withPivot('qty');
+    }
 }

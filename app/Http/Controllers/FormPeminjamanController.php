@@ -6,7 +6,7 @@ use App\Models\PeminjamanModel;
 use App\Models\sc;
 use Illuminate\Http\Request;
 
-class FormPeminjamanController extends Controller
+class Peminjaman extends Controller
 {
     /**
      * Display a listing of the resource.
