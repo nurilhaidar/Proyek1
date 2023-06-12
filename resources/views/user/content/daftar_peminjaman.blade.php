@@ -11,6 +11,7 @@
                                 <th>OKI</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Tanggal Kembali</th>
+                                <th>Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -22,6 +23,7 @@
                                     <td>{{ date('d-m-Y', strtotime($d->tanggal_pinjam)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($d->tanggal_kembali)) }}</td>
                                     <td>{{ $d->status->status }}</td>
+                                    <td>{{ $d->status->keterangan }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

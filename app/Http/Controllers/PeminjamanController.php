@@ -18,7 +18,23 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $data = PeminjamanModel::orderBy('created_at')->paginate(5);
+        $data = PeminjamanModel::all();
+        return view('admin.peminjaman.peminjaman')->with('data', $data);
+    }
+
+    public function blmKonfirm()
+    {
+        $data = PeminjamanModel::whereHas('status', function ($d) {
+            $d->where('status', 'Belum Dikonfirmasi');
+        })->get();
+        return view('admin.peminjaman.peminjaman')->with('data', $data);
+    }
+
+    public function blmKembali()
+    {
+        $data = PeminjamanModel::whereHas('status', function ($d) {
+            $d->where('status', 'Diterima');
+        })->get();
         return view('admin.peminjaman.peminjaman')->with('data', $data);
     }
 
@@ -44,8 +60,6 @@ class PeminjamanController extends Controller
         $barang = $request->input('barang');
         $qty = $request->input('qty');
         $tgl = $request->input('tanggal_pinjam');
-
-        // return dd($barang);
 
         $errors = [];
 
@@ -114,7 +128,6 @@ class PeminjamanController extends Controller
             return redirect('peminjaman');
         } else {
             return back()->with('message', $errors)->withInput();
-            // return dd($errors);
         }
     }
 

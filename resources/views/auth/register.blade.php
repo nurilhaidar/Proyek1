@@ -72,7 +72,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <select name="role" class="form-control" {{ Auth::user()->role !== 1 ? 'disabled' : '' }}>
+                        <select name="role" class="form-control" {{ Auth::user()->role !== 1 ? 'disabled' : 'minj' }}>
                             <option value=""></option>
                             <option value="1" {{ isset($data) ? ($data->role == 1 ? 'selected' : '') : '' }}>
                                 Super Admin

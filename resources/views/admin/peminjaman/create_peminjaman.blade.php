@@ -177,9 +177,9 @@
                                         <label>Status</label><br>
                                         <select name="status" class="form-control">
                                             <option value=""></option>
-                                            <option value="Belum Dikonformasi"
-                                                {{ isset($data) ? ($data->status->status == 'Belum Dikonformasi' ? 'selected' : '') : '' }}>
-                                                Belum Dikonformasi </option>
+                                            <option value="Belum Dikonfirmasi"
+                                                {{ isset($data) ? ($data->status->status == 'Belum Dikonfirmasi' ? 'selected' : '') : '' }}>
+                                                Belum Dikonfirmasi </option>
                                             <option
                                                 {{ isset($data) ? ($data->status->status == 'Dikonformasi' ? 'selected' : '') : '' }}
                                                 value="Dikonfirmasi">Dikonfirmasi</option>
@@ -189,6 +189,9 @@
                                             <option
                                                 {{ isset($data) ? ($data->status->status == 'Dikembalikan' ? 'selected' : '') : '' }}
                                                 value="Dikembalikan">Dikembalikan</option>
+                                            <option
+                                                {{ isset($data) ? ($data->status->status == 'Dibatalkan' ? 'selected' : '') : '' }}
+                                                value="Dibatalkan">Dibatalkan</option>
                                         </select>
                                         @error('status')
                                             <span>{{ $message }}</span>

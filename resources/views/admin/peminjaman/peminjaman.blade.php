@@ -23,6 +23,7 @@
                                     <th>Tanggal Pinjam</th>
                                     <th>Tanggal Kembali</th>
                                     <th>Status</th>
+                                    <th>Keterangan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -36,6 +37,7 @@
                                             <td>{{ date('d-m-Y', strtotime($p->tanggal_pinjam)) }}</td>
                                             <td>{{ date('d-m-Y', strtotime($p->tanggal_kembali)) }}</td>
                                             <td>{{ $p->status->status }}</td>
+                                            <td>{{ $p->status->keterangan }}</td>
                                             <td>
                                                 <div style="display: flex">
                                                     {{-- show --}}
@@ -58,7 +60,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="6" class="text-center">Data tidak ada</td>
+                                        <td colspan="8" class="text-center">Data tidak ada</td>
                                     </tr>
                                 @endif
                             </tbody>

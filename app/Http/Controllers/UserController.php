@@ -103,7 +103,7 @@ class UserController extends Controller
 
             StatusModel::create([
                 'id_peminjaman' => $id,
-                'status' => 'Belum Dikonformasi',
+                'status' => 'Belum Dikonfirmasi',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
