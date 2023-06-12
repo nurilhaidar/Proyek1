@@ -17,8 +17,7 @@
                     <div class="d-flex justify-content-center mt-5 mt-xxl-0">
                         <div class="card shadow border-0 rounded-4 mb-5">
                             <div class="card-body p-5">
-                                <form action="{{ $url_form }}" method="POST" enctype="multipart/form-data"
-                                    id="myForm">
+                                <form action="/peminjaman" method="post" enctype="multipart/form-data" id="myForm">
                                     @csrf
                                     <div class="row align-items-center gx-5">
                                         <div class="row">
@@ -157,16 +156,16 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-xxl-8">
                     <div class="text-center my-5">
-                        <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-                        <p class="lead fw-light mb-4">My name is Start Bootstrap and I help brands grow.</p>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit
-                            dolorum itaque qui unde quisquam consequatur autem. Eveniet quasi nobis aliquid cumque
-                            officiis sed rem iure ipsa! Praesentium ratione atque dolorem?</p>
-                        <div class="d-flex justify-content-center fs-2 gap-4">
-                            <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
-                            <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
-                            <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
-                        </div>
+                        <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About</span></h2>
+                        <p class="lead fw-light mb-4">Peminjaman Online Inventaris HMTI Polinema</p>
+                        <p class="text-muted">Website ini berfungsi untuk menampung informasi data berikut:<br>
+                            1. Informasi Data Barang dan Inventaris Himpunan Mahasiswa Teknologi Informasi<br>
+                            2. Informasi Data Peminjam Barang dan Inventaris Himpunan Mahasiswa Teknologi Informasi<br>
+                            3. Informasi Peminjaman Barang dan Inventaris Himpunan Mahasiswa Teknologi Informasi<br>
+
+                            Dengan adanya website ini, mempermudah dalam proses penambahan, update, dan edit data barang dan
+                            inventaris yang ada di
+                            Himpunan Mahasiswa Teknologi Informasi</p>
                     </div>
                 </div>
             </div>

@@ -81,7 +81,7 @@
                                         <option></option>
                                         @foreach ($kondisi as $a)
                                             <option value="{{ $a }}"
-                                                {{ isset($br) && $br->kondisi ? 'selected' : '' }}>
+                                                {{ isset($br) && $br->kondisi == $a ? 'selected' : '' }}>
                                                 {{ $a }}
                                             </option>
                                         @endforeach

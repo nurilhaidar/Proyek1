@@ -29,23 +29,36 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form action="{{ url('/register') }}" method="post">
+                <form action="{{ $url_form }}" method="POST">
                     @csrf
+                    {!! isset($data) ? method_field('PUT') : '' !!}
+                    @isset($data)
+                        <input type="hidden" name="username" value="{{ $data->username }}">
+                        <input type="hidden" name="name" value="{{ $data->name }}">
+                    @endisset
                     <div class="input-group mb-3">
-                        <input name="username" type="username" class="form-control" placeholder="Username">
+                        <input name="username" type="text" class="form-control" placeholder="Username"
+                            value="{{ isset($data) ? $data->username : '' }}" {{ isset($data) ? 'disabled' : '' }}>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
+                        @error('username')
+                            <span>{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input name="name" type="name" class="form-control" placeholder="Name">
+                        <input name="name" type="text" class="form-control" placeholder="Name"
+                            value="{{ isset($data) ? $data->name : '' }}" {{ isset($data) ? 'disabled' : '' }}>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
+                        @error('name')
+                            <span>{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="input-group mb-3">
                         <input name="password" type="password" class="form-control" placeholder="Password">
@@ -54,11 +67,28 @@
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
+                        @error('password')
+                            <span>{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3">
+                        <select name="role" class="form-control" {{ Auth::user()->role !== 1 ? 'disabled' : '' }}>
+                            <option value=""></option>
+                            <option value="1" {{ isset($data) ? ($data->role == 1 ? 'selected' : '') : '' }}>
+                                Super Admin
+                            </option>
+                            <option value="2" {{ isset($data) ? ($data->role == 2 ? 'selected' : '') : '' }}>
+                                Admin
+                            </option>
+                        </select>
+                        @error('role')
+                            <span>{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
                         </div>
                         <!-- /.col -->
                     </div>

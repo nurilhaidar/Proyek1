@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('') }}">
+        <a class="nav-link" href="{{ url('administrator/') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -27,25 +27,24 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('barang') }}">
+        <a class="nav-link" href="{{ url('administrator/inventaris') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Inventaris</span></a>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Peminjaman Inventaris</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ url('peminjaman/create') }}">Peminjaman</a>
-                <a class="collapse-item" href="{{ url('peminjaman') }}">Riwayat Peminjaman</a>
-            </div>
-        </div>
+        <a class="nav-link" href="{{ url('administrator/peminjaman') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Data Peminjaman</span></a>
     </li>
+
+    @if (Auth::user()->role == '1')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('administrator/user') }}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Data User</span></a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider">

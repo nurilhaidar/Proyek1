@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BarangModel;
+use App\Models\PeminjamanModel;
 use App\Models\StatusModel;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,11 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('admin.barang.create_barang')
+        $kondisi = ['Baik', 'Rusak'];
+        $satuan = ['Buah', 'Gulung', 'Kantong', 'Pack'];
+        $sumber = ['Swadana', 'Hibah'];
+
+        return view('admin.barang.create_barang', compact('kondisi', 'satuan', 'sumber'))
             ->with('url_form', url('/barang'));
     }
 
@@ -64,8 +69,7 @@ class BarangController extends Controller
         $barang->satuan = $request->get('satuan');
         $barang->save();
 
-        return redirect('barang')
-            ->with('success', 'Data barang Berhasil Ditambahkan');
+        return redirect('administrator/inventaris');
     }
 
     /**
@@ -74,9 +78,14 @@ class BarangController extends Controller
      * @param  \App\Models\sc  $sc
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangModel $barang)
+    public function show($id)
     {
-        //
+        $data = BarangModel::find($id);
+        $pinjam = PeminjamanModel::whereHas('detail', function ($d) use ($id) {
+            $d->where('id_barang', $id);
+        })->get();
+
+        return view('admin.barang.show_barang', compact('data', 'pinjam'));
     }
 
 
@@ -90,11 +99,11 @@ class BarangController extends Controller
     {
         $kondisi = ['Baik', 'Rusak'];
         $satuan = ['Buah', 'Gulung', 'Kantong', 'Pack'];
-        $sumber = ['Swadana', 'Dipa', 'Hibah'];
+        $sumber = ['Swadana', 'Hibah'];
         $barang = BarangModel::find($id);
         return view('admin.barang.create_barang', compact('kondisi', 'satuan', 'sumber'))
             ->with('br', $barang)
-            ->with('url_form', url('/barang/' . $id));
+            ->with('url_form', url('administrator/inventaris/' . $id));
     }
     /**
      * Update the specified resource in storage.
@@ -118,8 +127,7 @@ class BarangController extends Controller
         );
 
         $data = BarangModel::where('id', '=', $id)->update($request->except(['_token', '_method', 'submit']));
-        return redirect('barang')
-            ->with('success', 'Data barang Berhasil Diedit');
+        return redirect('administrator/inventaris');
     }
 
     /**

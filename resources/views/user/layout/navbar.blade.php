@@ -6,10 +6,13 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                <li class="nav-item"><a class="nav-link" href="{{ url('peminjaman/create') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('inventaris') }}">Inventaris</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('peminjaman') }}">Daftar Peminjaman</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('login') }}">Login</a></li>
+                @if (Auth::check())
+                    <li class="nav-item"><a class="nav-link" href="{{ url('administrator') }}">Admin</a></li>
+                @endif
             </ul>
         </div>
     </div>

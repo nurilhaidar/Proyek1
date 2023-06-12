@@ -10,7 +10,7 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <a href="{{ url('barang/create') }}" class="btn btn-success">Tambah Data</a>
+                    <a href="{{ url('administrator/user/create') }}" class="btn btn-success">Tambah Data</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -18,33 +18,31 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Peminjam</th>
-                                    <th>OKI</th>
-                                    <th>Tanggal Pinjam</th>
-                                    <th>Tanggal Kembali</th>
-                                    <th>Status</th>
+                                    <th>Username</th>
+                                    <th>Nama</th>
+                                    <th>Password</th>
+                                    <th>Role</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if ($data->count() > 0)
-                                    @foreach ($data as $p)
+                                    @foreach ($data as $index => $p)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $p->nama_peminjam }}</td>
-                                            <td>{{ $p->asal_oki }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($p->tanggal_pinjam)) }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($p->tanggal_kembali)) }}</td>
-                                            <td>{{ $p->status->status }}</td>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $p->username }}</td>
+                                            <td>{{ $p->name }}</td>
+                                            <td>{{ $p->password }}</td>
+                                            <td>{{ $p->role == 1 ? 'Super Admin' : 'Admin' }}</td>
                                             <td>
                                                 <div style="display: flex">
                                                     {{-- show --}}
-                                                    <a href="{{ url('/administrator/peminjaman/' . $p->id) }}"
-                                                        class="btn btn-sm btn-primary" style="margin-right: 5px"><i
-                                                            class="fas fa-fw fa-eye"></i></a>
+                                                    <a href="{{ url('/administrator/user/' . $p->id . '/edit') }}"
+                                                        class="btn btn-sm btn-warning" style="margin-right: 5px"><i
+                                                            class="fas fa-fw fa-pen"></i></a>
                                                     {{-- delete --}}
                                                     <form method="POST"
-                                                        action="{{ url('/administrator/peminjaman/' . $p->id) }}">
+                                                        action="{{ url('/administrator/user/' . $p->id) }}">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger"

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PeminjamanModel;
+use App\Models\StatusModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $date = date('Y-m-d', strtotime('-7 days'));
+        $total = PeminjamanModel::count();
+        $pinjam = PeminjamanModel::where('created_at', '>=', $date)->count();
+        $statusKonfirmasi = StatusModel::where('status', 'Belum Dikonfirmasi')->count();
+        $statusKembali = StatusModel::where('status', 'Diterima')->count();
+        return view('admin.home', compact('total', 'pinjam', 'statusKonfirmasi', 'statusKembali'));
     }
 }

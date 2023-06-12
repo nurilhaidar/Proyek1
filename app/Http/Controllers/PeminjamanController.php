@@ -19,7 +19,7 @@ class PeminjamanController extends Controller
     public function index()
     {
         $data = PeminjamanModel::orderBy('created_at')->paginate(5);
-        return view('user.peminjaman.peminjaman')->with('data', $data);
+        return view('admin.peminjaman.peminjaman')->with('data', $data);
     }
 
     /**
@@ -128,7 +128,21 @@ class PeminjamanController extends Controller
     {
         $data = PeminjamanModel::find($id);
         $barang = BarangModel::all()->sortBy('nama');
-        return view('admin.peminjaman.create_peminjaman', compact('data', 'barang'))->with('url_form', url('peminjaman/' . $id));
+        return view('admin.peminjaman.create_peminjaman', compact('data', 'barang'))
+            ->with('url_form', url('peminjaman/' . $id))
+            ->with('form_status', url('administrator/status/' . $id));
+    }
+
+    public function status(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|string',
+            'keterangan' => 'string'
+        ]);
+
+        $data = StatusModel::where('id_peminjaman', $id)->update($request->except('_token', '_method'));
+
+        return redirect('administrator/peminjaman/' . $id);
     }
 
     /**
@@ -162,10 +176,19 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function barang_check(Request $request)
-    {
+        $data = PeminjamanModel::find($id);
+        $data2 = DetailModel::where('id_peminjaman', $id)->get();
+        $data3 = StatusModel::where('id_peminjaman', $id)->get();
+        if ($data->surat != null) {
+            unlink(public_path('storage/' . $data->surat));
+        }
+        foreach ($data2 as $d) {
+            $d->delete();
+        }
+        foreach ($data3 as $d) {
+            $d->delete();
+        }
+        $data->delete();
+        return redirect('administrator/peminjaman');
     }
 }
