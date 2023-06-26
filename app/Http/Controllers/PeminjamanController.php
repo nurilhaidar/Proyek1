@@ -150,10 +150,14 @@ class PeminjamanController extends Controller
     {
         $request->validate([
             'status' => 'required|string',
-            'keterangan' => 'string'
+            'keterangan' => 'nullable|string'
         ]);
 
-        $data = StatusModel::where('id_peminjaman', $id)->update($request->except('_token', '_method'));
+        $data = StatusModel::where('id_peminjaman', $id)->update([
+            'status' => $request->status,
+            'keterangan' => $request->keterangan,
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
 
         return redirect('administrator/peminjaman/' . $id);
     }

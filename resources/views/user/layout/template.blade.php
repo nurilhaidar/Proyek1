@@ -19,15 +19,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('user/css/styles.css') }}" rel="stylesheet" />
-    @stack('style');
+    @stack('style')
 </head>
 
 <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
         <!-- Navigation-->
-        @include('user.layout.navbar');
+        @include('user.layout.navbar')
 
-        @yield('content');
+        @yield('content')
     </main>
     <!-- Footer-->
     <footer class="bg-white py-4 mt-auto">
@@ -48,4 +48,4 @@
 
 </html>
 
-@stack('script');
+@stack('script')

@@ -181,7 +181,7 @@
                                                 {{ isset($data) ? ($data->status->status == 'Belum Dikonfirmasi' ? 'selected' : '') : '' }}>
                                                 Belum Dikonfirmasi </option>
                                             <option
-                                                {{ isset($data) ? ($data->status->status == 'Dikonformasi' ? 'selected' : '') : '' }}
+                                                {{ isset($data) ? ($data->status->status == 'Dikonfirmasi' ? 'selected' : '') : '' }}
                                                 value="Dikonfirmasi">Dikonfirmasi</option>
                                             <option
                                                 {{ isset($data) ? ($data->status->status == 'Diterima' ? 'selected' : '') : '' }}

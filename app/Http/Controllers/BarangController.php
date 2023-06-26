@@ -33,7 +33,7 @@ class BarangController extends Controller
         $sumber = ['Swadana', 'Hibah'];
 
         return view('admin.barang.create_barang', compact('kondisi', 'satuan', 'sumber'))
-            ->with('url_form', url('/barang'));
+            ->with('url_form', url('/administrator/inventaris'));
     }
 
     /**
@@ -139,7 +139,7 @@ class BarangController extends Controller
     public function destroy($id)
     {
         BarangModel::where('id', '=', $id)->delete();
-        return redirect('barang')
+        return redirect('administrator/inventaris')
             ->with('success', 'Data barang Berhasil Dihapus');
     }
 }
