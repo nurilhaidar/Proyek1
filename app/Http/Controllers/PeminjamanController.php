@@ -8,6 +8,7 @@ use App\Models\PeminjamanModel;
 use App\Models\StatusModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PeminjamanController extends Controller
 {
@@ -207,5 +208,12 @@ class PeminjamanController extends Controller
         }
         $data->delete();
         return redirect('administrator/peminjaman');
+    }
+
+
+    public function download($id)
+    {
+        $path = public_path('storage/surat/' . $id);
+        return response()->download($path);
     }
 }

@@ -65,7 +65,8 @@
                                             type="file"{{ isset($data) ? 'disabled' : '' }} />
                                         <br>
                                         @isset($data)
-                                            <span>{{ $data->surat }}</span>
+                                            <span><a href="{{ url('administrator/download/' . $data->surat) }}">Download
+                                                    Surat</a></span>
                                         @endisset
                                         @error('surat')
                                             <span>{{ $message }}</span>
