@@ -22,7 +22,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="../../index2.html"><b>Register</a>
         </div>
 
         <div class="card">
@@ -72,7 +72,8 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <select name="role" class="form-control" {{ Auth::user()->role !== 1 ? 'disabled' : 'minj' }}>
+                        <select name="role" class="form-control"
+                            {{ Auth::user()->role !== 1 ? 'disabled' : 'minj' }}>
                             <option value=""></option>
                             <option value="1" {{ isset($data) ? ($data->role == 1 ? 'selected' : '') : '' }}>
                                 Super Admin

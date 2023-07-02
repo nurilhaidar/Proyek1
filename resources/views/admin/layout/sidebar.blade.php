@@ -38,6 +38,12 @@
             <span>Data Peminjaman</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('administrator/cetak') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Cetak Laporan</span></a>
+    </li>
+
     @if (Auth::user()->role == '1')
         <li class="nav-item">
             <a class="nav-link" href="{{ url('administrator/user') }}">
